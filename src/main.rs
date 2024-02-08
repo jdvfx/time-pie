@@ -41,13 +41,21 @@ fn mins_to_time(mins:u32) -> String{
 fn main() {
 
     let mut tasks:Vec<Task>= Vec::new();
-    let task1 = Task::new("sleep", "23:00","08:50");
+    let task1 = Task::new("sleep", "23:00","24:00");
     let task2 = Task::new("learn rust", "21:00","22:00");
     tasks.push(task1);
     tasks.push(task2);
 
+    let total_time_in_day = "24:00";
+    let total_mins = time_to_mins(&total_time_in_day);
+    println!("total minutes in day:{}",&total_mins);
+
     for task in tasks{
         println!("{:?}",task);
+
+
+        let duration = task.mins_end.abs_diff(task.mins_start);
+        println!("duration:{} mins",duration);
     }
 
 }
